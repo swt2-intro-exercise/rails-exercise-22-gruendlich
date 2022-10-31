@@ -13,4 +13,15 @@ describe "New author page", type: :feature do
     expect(page).to have_field('author[last_name]')
     expect(page).to have_field('author[homepage]')
   end
+
+  it "should allow the creation of a new user in the database" do
+    author = Author.create({first_name: 'Alan', last_name: 'Turing', homepage:'http://wikipedia.org/Alan_Turing'})
+    visit new_author_path
+    page.fill_in 'author[first_name]', with: 'Alan'
+    page.fill_in 'author[last_name]', with: 'Turing'
+    page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+    find('input[type="submit"]').click
+
+    expect(Author.find_by_last_name('Turing')).to eq(author)
+  end
 end
