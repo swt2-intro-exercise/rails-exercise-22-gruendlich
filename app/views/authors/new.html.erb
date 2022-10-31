@@ -1,17 +1,17 @@
 <%= form_with url: authors_path, local: true do |form| %>
   <p>
-    <%= form.label :first_name, 'First Name' %><br>
-    <%= form.text_field :first_name %>
+    <%= form.label :'author[first_name]', 'First Name' %><br>
+    <%= form.text_field :'author[first_name]' %>
   </p>
 
   <p>
-    <%= form.label :'Last Name' %><br>
-    <%= form.text_field :'last_name' %>
+    <%= form.label :'author[last_name]', 'Last Name' %><br>
+    <%= form.text_field :'author[last_name]' %>
   </p>
 
   <p>
-    <%= form.label :'Homepage' %><br>
-    <%= form.text_area :'homepage' %>
+    <%= form.label :'author[homepage]', 'Homepage' %><br>
+    <%= form.text_area :'author[homepage]' %>
   </p>
 
   <p>
