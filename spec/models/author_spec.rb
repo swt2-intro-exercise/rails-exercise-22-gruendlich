@@ -12,4 +12,11 @@ RSpec.describe Author, type: :model do
     author = Author.create({first_name: 'Alan', last_name: 'Turing', homepage:'http://wikipedia.org/Alan_Turing'})
     expect(author.name).to eq('Alan Turing')
   end
+
+  it "should make sure that an author has a lastname" do
+    a = Author.create({first_name: 'Alan', last_name: '', homepage:'http://wikipedia.org/Alan_Turing'})
+    expect(a).to_not be_valid
+    a.last_name = 'Turing'
+    expect(a).to be_valid
+  end
 end
