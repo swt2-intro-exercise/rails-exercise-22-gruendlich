@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   def index
+    @authors = Author.all
   end
   def show
     @author = Author.find(params[:id])
@@ -7,10 +8,10 @@ class AuthorsController < ApplicationController
   def new
   end
   def create
-    @article = Author.new(author_params)
+    @author = Author.new(author_params)
 
-    @article.save
-    redirect_to @article
+    @author.save
+    redirect_to @author
   end
 
   private
