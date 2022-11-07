@@ -30,10 +30,15 @@ describe "New author page", type: :feature do
 
   it "should only save the new author if his entries are valid" do
     visit new_author_path
-    page.fill_in 'author[first_name]', with: 'Alan'
-    page.fill_in 'author[last_name]', with: ''
-    page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+    page.fill_in 'author[first_name]', with: 'TestAlan'
     find('input[type="submit"]').click
-    expect(page.current_path).to eq("/authors/new")
+    expect(Author.find_by_first_name("TestAlan")).to eq(nil)
+  end
+
+  it "should display an error message if an authors entries aren't valid" do
+    visit new_author_path
+    page.fill_in 'author[first_name]', with: 'TestAlan'
+    find('input[type="submit"]').click
+    expect(page).to have_css("#error_explanation")
   end
 end

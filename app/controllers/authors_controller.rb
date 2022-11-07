@@ -6,6 +6,7 @@ class AuthorsController < ApplicationController
     @author = Author.find(params[:id])
   end
   def new
+    @author = Author.new
   end
   def create
     @author = Author.new(author_params)
@@ -13,8 +14,8 @@ class AuthorsController < ApplicationController
     if @author.save
       redirect_to @author
     else
-      # render 'new'
-      redirect_to new_author_path
+      render 'new'
+      # redirect_to new_author_path
     end
   end
 
