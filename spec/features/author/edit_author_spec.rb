@@ -11,6 +11,6 @@ describe "Edit Author page" do
     visit edit_author_path(author)
     page.fill_in 'author[first_name]', with: 'TestAlan'
     find('input[type="submit"]').click
-    expect(Author.find(author.id).first_name).to_not eq(author.first_name)
+    expect(Author.find(author.id).first_name).not_to eq(author.first_name)
   end
 end

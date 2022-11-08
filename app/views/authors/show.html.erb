@@ -7,5 +7,8 @@
     <th> <%= @author.name %></th>
     <th><%= @author.homepage %></th>
     <td><%= link_to 'Edit', edit_author_path(@author) %></td>
+    <td><%= link_to 'Delete', author_path(@author), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
   </tr>
 </table>
+
+<%= link_to 'Back', authors_path %>
