@@ -21,8 +21,10 @@ describe "Edit paper page" do
   end
 
   it "should allow the selection of a previously created author" do
+    author = Author.create({first_name: 'Test', last_name: 'Man', homepage:'https://website.de'})
     visit edit_paper_path(paper)
     expect(page).to have_select("paper[author_ids][]", with_options:["Test Man"])
+    author.destroy
   end
 
   it "should store the selected authors" do
@@ -31,6 +33,6 @@ describe "Edit paper page" do
     select "Test Man", from: "paper[author_ids][]", match: :first
     find('input[type="submit"]').click
     expect(paper.authors.first.name).to eq(author.name)
-    # author.delete
+    author.destroy
   end
 end
