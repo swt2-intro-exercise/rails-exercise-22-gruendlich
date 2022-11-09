@@ -29,6 +29,6 @@ RSpec.describe Author, type: :model do
 
   it "should have an empty list of papers" do
     a = Author.create({first_name: 'P', last_name: 'Kowalski', homepage:'https://website.de'})
-    expect(a.paper).to be_empty
+    expect(a.papers).to be_empty
   end
 end
