@@ -13,6 +13,7 @@ class PapersController < ApplicationController
   # GET /papers/new
   def new
     @paper = Paper.new
+    @authors = Author.all
   end
 
   # GET /papers/1/edit
@@ -53,6 +54,6 @@ class PapersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def paper_params
-      params.require(:paper).permit(:title, :venue, :year)
+      params.require(:paper).permit(:title, :venue, :year, :author_ids => [])
     end
 end

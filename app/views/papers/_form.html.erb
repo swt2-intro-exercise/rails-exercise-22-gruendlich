@@ -26,6 +26,17 @@
     <%= form.number_field :year %>
   </div>
 
+  <%# if @authors.present? %>
+    <div>
+      <%= form.label :'author_ids', 'Authors' %><br>
+      <%#= form.select :authors, options_for_select(@authors.collect{ |a| [a.name, a.id] }, selected: paper.authors.first&.id), {prompt: '-Select-', :multiple => true } %>
+      <%= form.select 'author_ids',
+                      options_from_collection_for_select(Author.all, :id, :name, paper.author_ids),
+                      {},
+                      multiple: true, size: 10 %>
+    </div>
+  <%# end %>
+<!--  prompt: '-Select-',-->
   <div>
     <%= form.submit %>
   </div>

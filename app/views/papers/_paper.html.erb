@@ -16,7 +16,9 @@
 
   <p>
     <strong>Written by:</strong>
-    <%= paper.authors.first&.name %>
+    <% paper.authors.each do |author| %>
+      <%= author.name %> |
+    <% end %>
   </p>
 
 </div>
