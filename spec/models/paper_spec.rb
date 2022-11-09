@@ -22,8 +22,10 @@ RSpec.describe Paper, type: :model do
     expect(paper).to be_valid
   end
 
-  it "should make sure that a paper has a year of publication" do
+  it "should make sure that a paper has a year of publication given as an integer" do
     paper = Paper.create({title: "Titel", venue: "Stadt"})
+    expect(paper).to_not be_valid
+    paper.year = "A"
     expect(paper).to_not be_valid
     paper.year = 0
     expect(paper).to be_valid
